@@ -1,6 +1,5 @@
 import "./App.css";
 import FilterableTable from "./components/FilterableTable";
-import InventoryList from "./components/InventoryList";
 
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";

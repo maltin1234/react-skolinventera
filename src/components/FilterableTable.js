@@ -1,7 +1,7 @@
 import React from "react";
 import "../components/FilterableTable.css";
 import Header from "./Header";
-import PropTypes from "prop-types";
+
 import SearchBar from "./SearchBar";
 import FilterBox from "./FilterBox";
 import InventoryList from "./InventoryList";
