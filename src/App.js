@@ -1,24 +1,24 @@
-import './App.css';
-import FilterableTable from './components/FilterableTable';
-import InventoryList from './components/InventoryList';
+import "./App.css";
+import FilterableTable from "./components/FilterableTable";
+import InventoryList from "./components/InventoryList";
 
-
-
-import NavBar from './components/NavBar';
-import SideBar from './components/SideBar';
-
+import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
-    <div className="
-    ">
+    <div
+      className="
+    "
+    >
       <NavBar />
- <div className="container
-    ">
+      <div
+        className="container
+    "
+      >
         <SideBar />
         <FilterableTable></FilterableTable>
-      <InventoryList/>
-     </div>
+      </div>
     </div>
   );
 }
