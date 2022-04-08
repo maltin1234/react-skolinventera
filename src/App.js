@@ -1,24 +1,17 @@
 import "./App.css";
-import FilterableTable from "./components/FilterableTable";
-
-import NavBar from "./components/NavBar";
-import SideBar from "./components/SideBar";
+import Navbar from "./components/navigation/Navbar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div
-      className="
-    "
-    >
-      <NavBar />
-      <div
-        className="container
-    "
-      >
-        <SideBar />
-        <FilterableTable></FilterableTable>
-      </div>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
