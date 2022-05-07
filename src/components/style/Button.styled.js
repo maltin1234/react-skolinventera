@@ -31,6 +31,7 @@ export const SearchButton = styled.div`
   font-size: 12px;
   cursor: pointer;
   border-radius: 7px;
+  width: 75%;
 `;
 
 export const Group = styled.div`
