@@ -6,34 +6,6 @@ export const DivButton = styled.div`
   margin-left: 20px;
 `;
 
-export const FilterButton = styled.div`
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 3px 40px;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-
-  font-size: 12px;
-  cursor: pointer;
-  border-radius: 7px;
-`;
-export const SearchButton = styled.div`
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 5px 100px;
-  text-align: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  cursor: pointer;
-  border-radius: 7px;
-  width: 75%;
-`;
-
 export const Group = styled.div`
   display: flex;
   line-height: 28px;
