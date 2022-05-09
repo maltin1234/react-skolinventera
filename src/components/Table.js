@@ -44,7 +44,7 @@ export default function Table({ columns, data }) {
     {
       columns,
       data,
-      initialState: { pageIndex: 0 },
+      initialState: { pageIndex: 0, pageSize: 3 },
     },
 
     useGlobalFilter,
