@@ -5,8 +5,17 @@ import { Wrapper } from "./style/Table.styled";
 import { TableStyled } from "./style/Table.styled";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import matchSorter from "match-sorter";
+import GlobalFilter from "./GlobalFilter";
 
-import { useTable, useFilters, useSortBy, usePagination } from "react-table";
+import {
+  useTable,
+  useFilters,
+  useSortBy,
+  useAsyncDebounce,
+  useGlobalFilter,
+  usePagination,
+} from "react-table";
 
 export default function Table({ columns, data }) {
   const {
@@ -14,6 +23,10 @@ export default function Table({ columns, data }) {
     getTableBodyProps,
     headerGroups,
     prepareRow,
+    preGlobalFilteredRows,
+    globalFilter,
+    setGlobalFilter,
+    state,
     page, // Instead of using 'rows', we'll use page,
     // which has only the rows for the active page
 
@@ -33,40 +46,45 @@ export default function Table({ columns, data }) {
       data,
       initialState: { pageIndex: 0 },
     },
+
+    useGlobalFilter,
     usePagination
   );
+
   return (
     <Wrapper>
       <FilterBox></FilterBox>
+      <GlobalFilter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={state.globalFilter}
+      ></GlobalFilter>
 
       <TableStyled {...getTableProps()}>
-        <table {...getTableProps()}>
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
+                })}
               </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {page.map((row, i) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+            );
+          })}
+        </tbody>
+
         {/* 
         Pagination can be built however you'd like. 
         This is just a very basic UI implementation:

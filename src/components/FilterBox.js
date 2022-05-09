@@ -18,53 +18,6 @@ const AddIcon = styled(Add)`
 function FilterBox() {
   return (
     <>
-      {/* <Filter>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <LineBreak></LineBreak>
-        <DivButton>
-          {" "}
-          <h2>Enheter</h2>
-        </DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <LineBreak></LineBreak>
-        <DivButton>
-          <SearchButton>Search...</SearchButton>
-        </DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <DivButton></DivButton>
-        <LineBreak></LineBreak>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-        <DivButton>
-          <FilterButton>Filter</FilterButton>
-        </DivButton>
-      </Filter> */}
-
       <BoxContainer>
         <GridItem></GridItem>
         <GridItem></GridItem>
