@@ -8,7 +8,7 @@ import { Container, Main } from "./components/style/Container.styled";
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import Article from "./components/Article";
+
 import Home from "./components/pages/Home";
 
 function App() {

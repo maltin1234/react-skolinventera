@@ -1,21 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+
 import FilterBox from "./FilterBox";
 import { Wrapper } from "./style/Table.styled";
 import { TableStyled } from "./style/Table.styled";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import matchSorter from "match-sorter";
-import GlobalFilter from "./GlobalFilter";
 
-import {
-  useTable,
-  useFilters,
-  useSortBy,
-  useAsyncDebounce,
-  useGlobalFilter,
-  usePagination,
-} from "react-table";
+import GlobalFilter from "./GlobalFilter";
+import Pagination from "./Pagination";
+
+import { useTable, useGlobalFilter, usePagination } from "react-table";
 
 export default function Table({ columns, data }) {
   const {
@@ -26,7 +18,7 @@ export default function Table({ columns, data }) {
     preGlobalFilteredRows,
     globalFilter,
     setGlobalFilter,
-    state,
+
     page, // Instead of using 'rows', we'll use page,
     // which has only the rows for the active page
 
@@ -57,7 +49,7 @@ export default function Table({ columns, data }) {
       <GlobalFilter
         preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
-        globalFilter={state.globalFilter}
+        globalFilter={globalFilter}
       ></GlobalFilter>
 
       <TableStyled {...getTableProps()}>
@@ -89,53 +81,19 @@ export default function Table({ columns, data }) {
         Pagination can be built however you'd like. 
         This is just a very basic UI implementation:
       */}
-        <div className="pagination">
-          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-            {"<<"}
-          </button>{" "}
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            {"<"}
-          </button>{" "}
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            {">"}
-          </button>{" "}
-          <button
-            onClick={() => gotoPage(pageCount - 1)}
-            disabled={!canNextPage}
-          >
-            {">>"}
-          </button>{" "}
-          <span>
-            Page{" "}
-            <strong>
-              {pageIndex + 1} of {pageOptions.length}
-            </strong>{" "}
-          </span>
-          <span>
-            | Go to page:{" "}
-            <input
-              type="number"
-              defaultValue={pageIndex + 1}
-              onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                gotoPage(page);
-              }}
-              style={{ width: "100px" }}
-            />
-          </span>{" "}
-          <select
-            value={pageSize}
-            onChange={(e) => {
-              setPageSize(Number(e.target.value));
-            }}
-          >
-            {[3, 10, 20, 30, 40, 50].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
+        <Pagination
+          page={page}
+          canPreviousPage={canPreviousPage}
+          canNextPage={canNextPage}
+          pageOptions={pageOptions}
+          pageCount={pageCount}
+          gotoPage={gotoPage}
+          nextPage={nextPage}
+          previousPage={previousPage}
+          setPageSize={setPageSize}
+          pageIndex={pageIndex}
+          pageSize={pageSize}
+        ></Pagination>
       </TableStyled>
     </Wrapper>
   );

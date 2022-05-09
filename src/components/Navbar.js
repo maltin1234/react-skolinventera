@@ -1,11 +1,6 @@
 import React from "react";
-import { SidebarList } from "./style/Button.styled";
-import {
-  StyledNavbar,
-  MenuItemLinks,
-  MenuItems,
-  NavBar,
-} from "./style/NavbarStyled";
+
+import { StyledNavbar, MenuItemLinks, MenuItems } from "./style/NavbarStyled";
 
 import { SidebarData } from "../components/SidebarData";
 import { Link } from "react-router-dom";
