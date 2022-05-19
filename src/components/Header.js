@@ -1,5 +1,5 @@
 import { StyledHeader } from "./style/Header.styled";
-
+import React from "react";
 import { Navigation } from "@styled-icons/fluentui-system-filled/Navigation";
 import styled from "styled-components";
 

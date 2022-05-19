@@ -1,6 +1,8 @@
 import { StyledArticle } from "./style/Article.styled";
 import Table from "./Table";
 import React, { useMemo, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getAssetsAsync } from "../redux/assetSlice";
 
 import axios from "axios";
 
@@ -11,15 +13,15 @@ function Article() {
         Header: "Header",
         columns: [
           {
-            Header: "Language",
+            Header: "Serial Number",
             accessor: "serialNum",
           },
           {
-            Header: "Genre(s)",
+            Header: "Student name",
             accessor: "studName",
           },
           {
-            Header: "Runtime",
+            Header: "Location",
             accessor: "location",
           },
           {
@@ -27,8 +29,13 @@ function Article() {
             accessor: "date",
           },
           {
-            Header: "Language",
+            Header: "Computer type",
             accessor: "compType",
+          },
+
+          {
+            Header: "Status",
+            accessor: "status",
           },
         ],
       },
@@ -38,15 +45,15 @@ function Article() {
 
   const [data, setData] = useState([]);
 
+  const dispatch = useDispatch();
+  const assets = useSelector((state) => state.assets);
+
   useEffect(() => {
-    (async () => {
-      const result = await axios("http://localhost:3004/assets");
-      setData(result.data);
-    })();
-  }, []);
+    dispatch(getAssetsAsync());
+  }, [dispatch]);
   return (
     <StyledArticle>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={assets} />
     </StyledArticle>
   );
 }

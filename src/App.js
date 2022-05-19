@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 
 import Home from "./components/pages/Home";
+import Errands from "./components/pages/Errands";
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           {sidebar ? <Navbar sidebar={sidebar} /> : null}
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/case" element={<Errands />}></Route>
           </Routes>
         </Main>
       </Container>

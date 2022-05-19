@@ -19,11 +19,6 @@ function FilterBox() {
   return (
     <>
       <BoxContainer>
-        <GridItem></GridItem>
-        <GridItem></GridItem>
-        <GridItem></GridItem>
-        <GridItem></GridItem>
-        <GridItem></GridItem>
         <GridItem>
           <h1>Enheter</h1>
         </GridItem>
