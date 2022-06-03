@@ -4,7 +4,6 @@ import React, { useMemo, useState, useEffect } from "react";
 
 import axios from "axios";
 import EditComponent from "./EditComponent";
-import Assets from "./Assets";
 
 function Article() {
   const columns = useMemo(
@@ -13,37 +12,31 @@ function Article() {
         Header: "Header",
         columns: [
           {
-            Header: "Serial Number",
+            Header: "Language",
             accessor: "serialNum",
           },
           {
-            Header: "Student name",
+            Header: "Genre(s)",
             accessor: "studName",
           },
           {
-            Header: "Location",
+            Header: "Runtime",
             accessor: "location",
           },
           {
             Header: "Status",
-            accessor: "status",
-          },
-          {
-            Header: "Computer type",
-            accessor: "compType",
-          },
-          {
-            Header: "Date",
             accessor: "date",
           },
-
+          {
+            Header: "Language",
+            accessor: "compType",
+          },
           {
             Header: "Action",
             accessor: "action",
             Cell: ({ row }) => (
               <div>
                 <button onClick={() => handleEdit(row.original)}>Edit</button>
-                <button onClick={() => handleEdit(row.original)}>View</button>
               </div>
             ),
           },
@@ -54,9 +47,8 @@ function Article() {
   );
 
   const [data, setData] = useState([]);
-  const [updData, updateData] = useState([]);
-  const [showForm, setForm] = useState(false);
-
+  const [updatedData, updateData] = useState();
+  const [show, setShow] = useState(false);
   useEffect(() => {
     (async () => {
       const result = await axios("http://localhost:3004/assets");
@@ -65,30 +57,23 @@ function Article() {
   }, []);
 
   function handleEdit(row) {
+    console.log(row);
     updateData(row);
-    setForm(true);
+    setShow(true);
   }
-  // update customers on page after edit
-  // update customers on page after edit
-  function onUpdateCustomer(updatedCustomer) {
-    const updatedCustomers = data.map((obj) => {
-      if (obj.id === updatedCustomer.id) {
-        return updatedCustomer;
-      } else {
-        return obj;
-      }
-    });
-    setData(updatedCustomers);
-  }
+
+  console.log(updatedData, "updatedData");
   return (
     <StyledArticle>
-      <Assets
-        data={data}
-        columns={columns}
-        handleEdit={updData}
-        showForm={showForm}
-        onUpdateCustomer={onUpdateCustomer}
-      />
+      {show === true ? (
+        <EditComponent
+          columns={columns}
+          data={data}
+          updatedData={updatedData}
+        />
+      ) : (
+        <Table columns={columns} data={data} />
+      )}
     </StyledArticle>
   );
 }

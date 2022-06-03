@@ -2,32 +2,32 @@
   "assets": [
     {
       "id": 1,
-      "serialNum": "5CDN098767",
-      "studName": "James Hardy",
+      "serialNum": "5cd",
+      "studName": "johan coku",
       "location": "malmo",
-      "status": "In repair",
+      "status": "sverige",
       "compType": "hp",
-      "date": "date"
+      "date": "2016"
     },
-        {
+    {
       "id": 2,
-      "serialNum": "5CDN098BHBD",
-      "studName": "Jon Jonasson",
-      "location": "malmo",
-      "status": "Returned",
-      "compType": "hp",
-      "date": "date"
+      "serialNum": "hggy",
+      "studName": "bhjb",
+      "location": "bhbh",
+      "status": "bh",
+      "compType": "",
+      "date": ""
     },
-        {
+    {
       "id": 3,
-      "serialNum": "PX09CTY",
-      "studName": "Tom Hardy",
+      "serialNum": "5c3",
+      "studName": "john doe",
       "location": "malmo",
-      "status": "Borrowed",
+      "status": "in repair",
       "compType": "hp",
-      "date": "date"
+      "date": "2016-05-04"
     },
-        {
+    {
       "id": 4,
       "serialNum": "WC1309NY",
       "studName": "Jon Haraldsson",
@@ -36,7 +36,7 @@
       "compType": "hp",
       "date": "date"
     },
-          {
+    {
       "id": 5,
       "serialNum": "PC1O09Y",
       "studName": "Eli Eliasson",
@@ -45,7 +45,7 @@
       "compType": "hp",
       "date": "date"
     },
-          {
+    {
       "id": 6,
       "serialNum": "WC1NY34O3",
       "studName": "Tom Cruise",
@@ -54,73 +54,67 @@
       "compType": "hp",
       "date": "date"
     }
-    
-    
-    
   ],
   "reported": [
     {
       "id": 1,
       "serialNum": "5CDN098767",
-       "reporter": "James Hardy",
+      "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     },
-        {
+    {
       "id": 2,
       "serialNum": "5CDN098BHBD",
-        "reporter": "James Hardy",
+      "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     },
-        {
+    {
       "id": 3,
       "serialNum": "PX09CTY",
       "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     },
-        {
+    {
       "id": 4,
       "serialNum": "WC1309NY",
-       "reporter": "James Hardy",
+      "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     },
-          {
+    {
       "id": 5,
       "serialNum": "PC1O09Y",
-       "reporter": "James Hardy",
+      "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     },
-          {
+    {
       "id": 6,
       "serialNum": "WC1NY34O3",
-     "reporter": "James Hardy",
+      "reporter": "James Hardy",
       "location": "malmo",
       "damage": "This is broken down",
       "status": "In repair",
-      "priority":"5",
+      "priority": "5",
       "date": "date"
     }
-    
-    
-    
   ]
 }

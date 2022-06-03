@@ -1,0 +1,22 @@
+import React from "react";
+
+function EditComponent({ updatedData }) {
+  const data = updatedData;
+
+  return (
+    <div>
+      {Object.keys(data).map((asset, index) => (
+        <li key={index}>{data[asset]}</li>
+      ))}
+      <form>
+        <input type="text" name="name" />
+        <input type="text" name="email" />
+        <input type="text" name="phone" />
+        <input type="text" name="name" />
+        <button type="submit">Submit Changes</button>
+      </form>
+    </div>
+  );
+}
+
+export default EditComponent;
