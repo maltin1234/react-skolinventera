@@ -14,7 +14,6 @@ export default function GlobalFilter({
 
   return (
     <span>
-      Search:{" "}
       <input
         value={value || ""}
         onChange={(e) => {

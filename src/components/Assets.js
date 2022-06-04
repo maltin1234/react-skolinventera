@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import Asset from "./Asset";
+import Table from "./Table";
 import EditComponent from "./EditComponent";
-function Assets({ data, columns, handleEdit, showForm, onUpdateCustomer }) {
+function Assets({
+  data,
+  columns,
+  handleEdit,
+  showForm,
+  onUpdateCustomer,
+  editMode,
+}) {
   const [editForm, setEditForm] = useState({
     serialNum: "",
     studName: "",
@@ -35,9 +43,10 @@ function Assets({ data, columns, handleEdit, showForm, onUpdateCustomer }) {
           columns={columns}
           handleEdit={handleEdit}
           handleCustomerUpdate={handleCustomerUpdate}
+          editMode={editMode}
         />
       ) : (
-        <Asset data={data} columns={columns}></Asset>
+        <Table data={data} columns={columns}></Table>
       )}
     </>
   );

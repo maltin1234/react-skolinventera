@@ -80,26 +80,40 @@ function EditComponent({
   editForm,
   handleChange,
   handleCustomerUpdate,
+  editMode,
 }) {
   console.log(handleEdit, "true");
   const [isEditing, setEditing] = useState(false);
 
   function formSubmit(e) {
     e.preventDefault();
-    console.log(editForm, "form");
-
-    fetch(`http://localhost:3004/assets/${handleEdit.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editForm),
-    })
-      .then((resp) => resp.json())
-      .then((updatedCustomer) => {
-        handleCustomerUpdate(updatedCustomer);
+    console.log(editMode, "form");
+    if (editMode === true) {
+      fetch(`http://localhost:3004/assets/${handleEdit.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editForm),
       })
-      .then(setEditing(true));
+        .then((resp) => resp.json())
+        .then((updatedCustomer) => {
+          handleCustomerUpdate(updatedCustomer);
+        })
+        .then(setEditing(true));
+    } else {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editForm),
+      };
+      fetch("http://localhost:3004/assets/", requestOptions)
+        .then((response) => {
+          console.log(response);
+          response.json();
+        })
+        .then(setEditing(true));
+    }
   }
 
   return (

@@ -2,21 +2,21 @@
   "assets": [
     {
       "id": 1,
-      "serialNum": "5cd",
-      "studName": "johan coku",
-      "location": "malmo",
-      "status": "sverige",
-      "compType": "hp",
-      "date": "2016"
+      "serialNum": "f45f54rf",
+      "studName": "45f4f4f",
+      "location": "",
+      "status": "",
+      "compType": "",
+      "date": ""
     },
     {
       "id": 2,
-      "serialNum": "hggy",
-      "studName": "bhjb",
-      "location": "bhbh",
-      "status": "bh",
-      "compType": "",
-      "date": ""
+      "serialNum": "wf3rf4r",
+      "studName": "f3f4f4t4",
+      "location": "f4g4tg4tg",
+      "status": "g4tg4gg4g",
+      "compType": "g4tg4g4g",
+      "date": "g4gt4g4tg4gt4g4t4"
     },
     {
       "id": 3,
@@ -53,6 +53,51 @@
       "status": "Needs repair",
       "compType": "hp",
       "date": "date"
+    },
+    {
+      "serialNum": "nj",
+      "studName": "njn",
+      "location": "njn",
+      "status": "nun",
+      "compType": "nubnu",
+      "date": "nunb",
+      "id": 7
+    },
+    {
+      "serialNum": "nd3nd3",
+      "studName": "en3bd3",
+      "location": "ndu3bd",
+      "status": "",
+      "compType": "",
+      "date": "",
+      "id": 8
+    },
+    {
+      "serialNum": "judh3udh3udh3d",
+      "studName": "ndu3ibdu3bd",
+      "location": "dbnsi3bsuy3bdsuybsu3sd",
+      "status": "",
+      "compType": "",
+      "date": "",
+      "id": 9
+    },
+    {
+      "serialNum": "bh3bh3b",
+      "studName": "",
+      "location": "",
+      "status": "",
+      "compType": "",
+      "date": "",
+      "id": 10
+    },
+    {
+      "serialNum": "johan",
+      "studName": "",
+      "location": "",
+      "status": "",
+      "compType": "",
+      "date": "",
+      "id": 11
     }
   ],
   "reported": [

@@ -1,7 +1,7 @@
 import React from "react";
-import Table from "./Table";
+import Article from "./Article";
 function Asset({ columns, data }) {
-  return <Table data={data} columns={columns}></Table>;
+  return <Article data={data} columns={columns}></Article>;
 }
 
 export default Asset;

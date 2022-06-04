@@ -1,4 +1,5 @@
 import React from "react";
+import GlobalFilter from "./GlobalFilter";
 
 import {
   BoxContainer,
@@ -15,7 +16,7 @@ const AddIcon = styled(Add)`
   height: 20px;
 `;
 
-function FilterBox() {
+function FilterBox({ preGlobalFilteredRows, setGlobalFilter, globalFilter }) {
   return (
     <>
       <BoxContainer>
@@ -31,24 +32,15 @@ function FilterBox() {
 
         <GridItem style={{ gridColumn: "span 2" }}></GridItem>
         <GridItem style={{ gridColumn: "span 2" }}>
-          <SearchButton>Search...</SearchButton>
+          <SearchButton>
+            <GlobalFilter
+              preGlobalFilteredRows={preGlobalFilteredRows}
+              setGlobalFilter={setGlobalFilter}
+              globalFilter={globalFilter}
+            ></GlobalFilter>
+          </SearchButton>
         </GridItem>
         <GridItem style={{ gridColumn: "span 3" }}></GridItem>
-        <GridItem>
-          <FilterButton>Filter</FilterButton>
-        </GridItem>
-        <GridItem>
-          <FilterButton>Filter</FilterButton>
-        </GridItem>
-        <GridItem>
-          <FilterButton>Filter</FilterButton>
-        </GridItem>
-        <GridItem>
-          <FilterButton>Filter</FilterButton>
-        </GridItem>
-        <GridItem>
-          <FilterButton>Filter</FilterButton>
-        </GridItem>
       </BoxContainer>
     </>
   );

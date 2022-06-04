@@ -3,7 +3,7 @@ import Table from "./Table";
 import React, { useMemo, useState, useEffect } from "react";
 
 import axios from "axios";
-import EditComponent from "./EditComponent";
+
 import Assets from "./Assets";
 
 function Article() {
@@ -43,7 +43,7 @@ function Article() {
             Cell: ({ row }) => (
               <div>
                 <button onClick={() => handleEdit(row.original)}>Edit</button>
-                <button onClick={() => handleEdit(row.original)}>View</button>
+                <button onClick={() => handleAdd()}>View</button>
               </div>
             ),
           },
@@ -56,6 +56,7 @@ function Article() {
   const [data, setData] = useState([]);
   const [updData, updateData] = useState([]);
   const [showForm, setForm] = useState(false);
+  const [editMode, setMode] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -66,6 +67,11 @@ function Article() {
 
   function handleEdit(row) {
     updateData(row);
+    setMode(true);
+    setForm(true);
+  }
+  function handleAdd(row) {
+    setMode(false);
     setForm(true);
   }
   // update customers on page after edit
@@ -88,6 +94,7 @@ function Article() {
         handleEdit={updData}
         showForm={showForm}
         onUpdateCustomer={onUpdateCustomer}
+        editMode={editMode}
       />
     </StyledArticle>
   );

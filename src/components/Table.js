@@ -45,12 +45,11 @@ export default function Table({ columns, data }) {
 
   return (
     <Wrapper>
-      <FilterBox></FilterBox>
-      <GlobalFilter
+      <FilterBox
         preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}
-      ></GlobalFilter>
+      ></FilterBox>
 
       <TableStyled {...getTableProps()}>
         <thead>
