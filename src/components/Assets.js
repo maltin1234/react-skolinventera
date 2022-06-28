@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-import Asset from "./Asset";
+import React, { useState, useEffect } from "react";
+
 import Table from "./Table";
 import EditComponent from "./EditComponent";
-function Assets({
-  data,
-  columns,
-  handleEdit,
-  showForm,
-  onUpdateCustomer,
-  editMode,
-}) {
+import FormComponent from "./FormComponent";
+import { useSelector } from "react-redux";
+
+function Assets({ data, columns }) {
   const [editForm, setEditForm] = useState({
     serialNum: "",
     studName: "",
@@ -27,26 +23,22 @@ function Assets({
     });
   }
 
-  function handleCustomerUpdate(updatedCustomer) {
-    onUpdateCustomer(updatedCustomer);
-  }
-
-  // needed logic for conditional rendering of the form - shows the asset you want when you want them, and hides it when you don't
+  const showForm = useSelector((state) => state.assets.value);
+  useEffect(() => {
+    console.log(showForm);
+  }, [showForm]);
 
   return (
     <>
-      {showForm ? (
-        <EditComponent
+      {!showForm ? (
+        <Table data={data} columns={columns}></Table>
+      ) : (
+        <FormComponent
           editForm={editForm}
           handleChange={handleChange}
           data={data}
           columns={columns}
-          handleEdit={handleEdit}
-          handleCustomerUpdate={handleCustomerUpdate}
-          editMode={editMode}
-        />
-      ) : (
-        <Table data={data} columns={columns}></Table>
+        ></FormComponent>
       )}
     </>
   );

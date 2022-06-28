@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import styled from "styled-components";
 
 import Article from "./Article";
 import { useSelector, useDispatch } from "react-redux";
-import { isEditing } from "../store/assetSlice";
+import { assetUpdate, isEditing } from "../store/assetSlice";
+
 export const Button = styled.button`
   display: flex;
   flex-direction: row;
@@ -74,33 +76,52 @@ const Input = styled.input`
   height: 30px;
 `;
 
-function EditComponent({
+function FormComponent({
   handleEdit,
   data,
   columns,
   editForm,
   handleChange,
   handleCustomerUpdate,
+  editMode,
 }) {
-  const dispatch = useDispatch();
+  const show = useSelector((state) => state.assets.value);
   const update = useSelector((state) => state.assets.update);
-  const close = useSelector((state) => state.assets.value);
+  const dispatch = useDispatch();
 
-  function formSubmit(e) {
-    fetch(`http://localhost:3004/assets/${update}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editForm),
-    })
-      .then((resp) => resp.json())
-      .then((updatedCustomer) => {
-        handleCustomerUpdate(updatedCustomer);
-      })
-      .then(dispatch(close()));
+  async function formSubmit(e) {
+    e.preventDefault();
+
+    const patchData = async () => {
+      const result = await fetch(
+        `http://localhost:3004/assets/${update[0].id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(editForm),
+        }
+      );
+      dispatch(isEditing());
+    };
+    const addData = async () => {
+      const add = await fetch(`http://localhost:3004/assets`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editForm),
+      });
+      dispatch(isEditing());
+    };
+    if (update.includes(undefined)) {
+      addData();
+    } else {
+      patchData();
+    }
+    // render add or edit based on if update has data or not
   }
-
   return (
     <>
       <CenterForm>
@@ -158,4 +179,4 @@ function EditComponent({
   );
 }
 
-export default EditComponent;
+export default FormComponent;

@@ -1,7 +1,11 @@
 import React from "react";
 import Article from "./Article";
 function Asset({ columns, data }) {
-  return <Article data={data} columns={columns}></Article>;
+  return (
+    <>
+      <p>hello</p>
+    </>
+  );
 }
 
 export default Asset;

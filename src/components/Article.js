@@ -1,12 +1,16 @@
 import { StyledArticle } from "./style/Article.styled";
-import Table from "./Table";
+
 import React, { useMemo, useState, useEffect } from "react";
-
 import axios from "axios";
-
 import Assets from "./Assets";
+import { useSelector, useDispatch } from "react-redux";
+import { isEditing, assetUpdate } from "../store/assetSlice";
 
 function Article() {
+  const dispatch = useDispatch();
+  const show = useSelector((state) => state.assets.value);
+  const update = useSelector((state) => state.assets.update);
+
   const columns = useMemo(
     () => [
       {
@@ -42,60 +46,37 @@ function Article() {
             accessor: "action",
             Cell: ({ row }) => (
               <div>
-                <button onClick={() => handleEdit(row.original)}>Edit</button>
-                <button onClick={() => handleAdd()}>View</button>
+                <button onClick={() => form(row.original)}>Edit</button>
+                <button onClick={() => form(row.original)}>View</button>
               </div>
             ),
           },
         ],
       },
     ],
-    [handleEdit]
+    [update, show]
   );
 
   const [data, setData] = useState([]);
-  const [updData, updateData] = useState([]);
-  const [showForm, setForm] = useState(false);
-  const [editMode, setMode] = useState(true);
+  function form(payload) {
+    dispatch(isEditing());
+    dispatch(assetUpdate(payload));
+    console.log(payload, "payload");
+  }
 
   useEffect(() => {
     (async () => {
       const result = await axios("http://localhost:3004/assets");
       setData(result.data);
     })();
-  }, []);
+  }, [show]);
+  useEffect(() => {
+    console.log(show, "hahah");
+  }, [show]);
 
-  function handleEdit(row) {
-    updateData(row);
-    setMode(true);
-    setForm(true);
-  }
-  function handleAdd(row) {
-    setMode(false);
-    setForm(true);
-  }
-  // update customers on page after edit
-  // update customers on page after edit
-  function onUpdateCustomer(updatedCustomer) {
-    const updatedCustomers = data.map((obj) => {
-      if (obj.id === updatedCustomer.id) {
-        return updatedCustomer;
-      } else {
-        return obj;
-      }
-    });
-    setData(updatedCustomers);
-  }
   return (
     <StyledArticle>
-      <Assets
-        data={data}
-        columns={columns}
-        handleEdit={updData}
-        showForm={showForm}
-        onUpdateCustomer={onUpdateCustomer}
-        editMode={editMode}
-      />
+      <Assets data={data} columns={columns} />
     </StyledArticle>
   );
 }
